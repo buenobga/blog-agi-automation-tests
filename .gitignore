@@ -1,0 +1,17 @@
+results/
+output/
+logs/
+*.log
+*.xml
+*.html
+
+
+*.pyc
+*.pyo
+__pycache__/
+.env/
+
+
+.vscode/
+.idea/
+
