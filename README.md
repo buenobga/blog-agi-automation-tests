@@ -40,7 +40,6 @@ blog-agi-automation-tests/
 - [Robot Framework](https://robotframework.org/)
 - [SeleniumLibrary](https://github.com/robotframework/SeleniumLibrary)
 
-
 ---
 
 ## 🚀 Como Executar
