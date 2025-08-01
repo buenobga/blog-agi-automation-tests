@@ -34,4 +34,10 @@ jobs:
           CHROME_BIN: /usr/bin/google-chrome-stable
           CHROMEDRIVER_PATH: /usr/lib/chromium-browser/chromedriver
         run: |
-          robot tests/
+          robot --outputdir results/ tests/
+
+      - name: Salvar relatórios como artefatos
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-report
+          path: results/
