@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.12.2 on win32)" generated="20250801 15:19:40.888" rpa="false" schemaversion="4">
+<suite id="s1" name="Blog Agibank Automation Suite" source="c:\repo\blog-agi-automation-tests\tests\blog_agibank_automation_suite.robot">
+<test id="s1-t1" name="Realizar busca por artigos e validar exibição de resultados" line="8">
+<kw name="Abrir o navegador" library="common.resource" type="SETUP">
+<kw name="Configurar Ambiente" library="common.resource">
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20250801 15:19:41.102" level="INFO" html="true">Directory '&lt;a href="file://C:\repo\blog-agi-automation-tests\screenshots"&gt;C:\repo\blog-agi-automation-tests\screenshots&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20250801 15:19:41.102" endtime="20250801 15:19:41.104"/>
+</kw>
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20250801 15:19:41.104" endtime="20250801 15:19:41.105"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:41.101" endtime="20250801 15:19:41.105"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>'${MODO_HEADLESS}' == 'True'</arg>
+<arg>add_argument("--headless=new");add_argument("--disable-gpu")</arg>
+<arg>${EMPTY}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250801 15:19:41.106" level="INFO">${chrome_options} = add_argument("--headless=new");add_argument("--disable-gpu")</msg>
+<status status="PASS" starttime="20250801 15:19:41.105" endtime="20250801 15:19:41.107"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20250801 15:19:41.108" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20250801 15:19:41.107" endtime="20250801 15:19:42.326"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20250801 15:19:42.327" endtime="20250801 15:19:42.351"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:41.100" endtime="20250801 15:19:42.351"/>
+</kw>
+<kw name="Acessar Home Page" library="homepage">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20250801 15:19:42.351" level="INFO">Opening url 'https://blog.agibank.com.br'</msg>
+<status status="PASS" starttime="20250801 15:19:42.351" endtime="20250801 15:19:42.567"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:42.351" endtime="20250801 15:19:42.568"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>07s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250801 15:19:49.568" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20250801 15:19:42.568" endtime="20250801 15:19:49.569"/>
+</kw>
+<kw name="Clicar para habilitar a pesquisa" library="searchbar">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=${BOTAO_LUPA}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250801 15:19:49.570" endtime="20250801 15:19:49.583"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${BOTAO_LUPA}</arg>
+<arg>timeout=${TIMEOUT_CURTO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:19:49.583" endtime="20250801 15:19:49.598"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector(".ast-search-menu-icon.slide-search").classList.add('ast-dropdown-active')</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250801 15:19:49.599" level="INFO">Executing JavaScript:
+document.querySelector(".ast-search-menu-icon.slide-search").classList.add('ast-dropdown-active')
+Without any arguments.</msg>
+<status status="PASS" starttime="20250801 15:19:49.599" endtime="20250801 15:19:49.606"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:19:49.684" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-1.png"&gt;&lt;img src="screenshots/selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:19:49.606" endtime="20250801 15:19:49.684"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:49.570" endtime="20250801 15:19:49.686"/>
+</kw>
+<kw name="Digitar texto valido para pesquisa" library="searchbar">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${CAMPO_PESQUISA}</arg>
+<arg>timeout=${TIMEOUT_CURTO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:19:49.686" endtime="20250801 15:19:49.701"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=${CAMPO_PESQUISA}</arg>
+<arg>${PESQUISA_VALIDA}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20250801 15:19:49.701" level="INFO">Typing text 'pix' into text field 'xpath=//input[contains(@id, 'search-field')]'.</msg>
+<status status="PASS" starttime="20250801 15:19:49.701" endtime="20250801 15:19:49.764"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:19:49.859" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-2.png"&gt;&lt;img src="screenshots/selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:19:49.764" endtime="20250801 15:19:49.859"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:49.686" endtime="20250801 15:19:49.859"/>
+</kw>
+<kw name="Clicar Botão Pesquisar" library="searchbar">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector("button[aria-label='Enviar pesquisa']").click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250801 15:19:49.860" level="INFO">Executing JavaScript:
+document.querySelector("button[aria-label='Enviar pesquisa']").click()
+Without any arguments.</msg>
+<status status="PASS" starttime="20250801 15:19:49.860" endtime="20250801 15:19:50.424"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:49.860" endtime="20250801 15:19:50.424"/>
+</kw>
+<kw name="Validar Resultado da Pesquisa" library="searchresultspage">
+<kw name="Wait Until Location Contains" library="SeleniumLibrary">
+<arg>?s=${PESQUISA_VALIDA}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" starttime="20250801 15:19:50.425" endtime="20250801 15:19:50.433"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=${TEXTO_PESQUISADO}</arg>
+<arg>${PESQUISA_VALIDA}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20250801 15:19:50.434" level="INFO">Verifying element 'xpath=//section[contains(@class, 'ast-archive-description')]//h1//span' contains exact text 'pix'.</msg>
+<status status="PASS" starttime="20250801 15:19:50.433" endtime="20250801 15:19:50.481"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=${ARTIGOS}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250801 15:19:50.482" endtime="20250801 15:19:50.491"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:19:50.584" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-3.png"&gt;&lt;img src="screenshots/selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:19:50.491" endtime="20250801 15:19:50.585"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:50.425" endtime="20250801 15:19:50.585"/>
+</kw>
+<kw name="Fechar o navegador" library="common.resource" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20250801 15:19:50.585" endtime="20250801 15:19:52.750"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:50.585" endtime="20250801 15:19:52.750"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:41.100" endtime="20250801 15:19:52.752"/>
+</test>
+<test id="s1-t2" name="Realizar busca sem resultados" line="16">
+<kw name="Abrir o navegador" library="common.resource" type="SETUP">
+<kw name="Configurar Ambiente" library="common.resource">
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20250801 15:19:52.756" level="INFO" html="true">Directory '&lt;a href="file://C:\repo\blog-agi-automation-tests\screenshots"&gt;C:\repo\blog-agi-automation-tests\screenshots&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20250801 15:19:52.756" endtime="20250801 15:19:52.756"/>
+</kw>
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20250801 15:19:52.757" endtime="20250801 15:19:52.757"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:52.756" endtime="20250801 15:19:52.757"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>'${MODO_HEADLESS}' == 'True'</arg>
+<arg>add_argument("--headless=new");add_argument("--disable-gpu")</arg>
+<arg>${EMPTY}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250801 15:19:52.757" level="INFO">${chrome_options} = add_argument("--headless=new");add_argument("--disable-gpu")</msg>
+<status status="PASS" starttime="20250801 15:19:52.757" endtime="20250801 15:19:52.758"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20250801 15:19:52.758" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20250801 15:19:52.758" endtime="20250801 15:19:54.151"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20250801 15:19:54.151" endtime="20250801 15:19:54.182"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:52.756" endtime="20250801 15:19:54.182"/>
+</kw>
+<kw name="Acessar Home Page" library="homepage">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20250801 15:19:54.183" level="INFO">Opening url 'https://blog.agibank.com.br'</msg>
+<status status="PASS" starttime="20250801 15:19:54.183" endtime="20250801 15:19:54.389"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:54.182" endtime="20250801 15:19:54.389"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>07s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250801 15:20:01.389" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20250801 15:19:54.389" endtime="20250801 15:20:01.391"/>
+</kw>
+<kw name="Clicar para habilitar a pesquisa" library="searchbar">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=${BOTAO_LUPA}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250801 15:20:01.393" endtime="20250801 15:20:01.423"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${BOTAO_LUPA}</arg>
+<arg>timeout=${TIMEOUT_CURTO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:20:01.423" endtime="20250801 15:20:01.436"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector(".ast-search-menu-icon.slide-search").classList.add('ast-dropdown-active')</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250801 15:20:01.437" level="INFO">Executing JavaScript:
+document.querySelector(".ast-search-menu-icon.slide-search").classList.add('ast-dropdown-active')
+Without any arguments.</msg>
+<status status="PASS" starttime="20250801 15:20:01.436" endtime="20250801 15:20:01.440"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:20:01.518" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-4.png"&gt;&lt;img src="screenshots/selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:20:01.440" endtime="20250801 15:20:01.518"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:01.392" endtime="20250801 15:20:01.518"/>
+</kw>
+<kw name="Digitar texto inválido para pesquisa" library="searchbar">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${CAMPO_PESQUISA}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:20:01.519" endtime="20250801 15:20:01.534"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>xpath=${CAMPO_PESQUISA}</arg>
+<arg>${PESQUISA_INVALIDA}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20250801 15:20:01.535" level="INFO">Typing text 'morango' into text field 'xpath=//input[contains(@id, 'search-field')]'.</msg>
+<status status="PASS" starttime="20250801 15:20:01.534" endtime="20250801 15:20:01.591"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:20:01.674" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-5.png"&gt;&lt;img src="screenshots/selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:20:01.592" endtime="20250801 15:20:01.674"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:01.518" endtime="20250801 15:20:01.674"/>
+</kw>
+<kw name="Clicar Botão Pesquisar" library="searchbar">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>document.querySelector("button[aria-label='Enviar pesquisa']").click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20250801 15:20:01.675" level="INFO">Executing JavaScript:
+document.querySelector("button[aria-label='Enviar pesquisa']").click()
+Without any arguments.</msg>
+<status status="PASS" starttime="20250801 15:20:01.675" endtime="20250801 15:20:02.213"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:01.675" endtime="20250801 15:20:02.213"/>
+</kw>
+<kw name="Verificar mensagem de nenhum resultado encontrado" library="searchresultspage">
+<kw name="Wait Until Location Contains" library="SeleniumLibrary">
+<arg>?s=${PESQUISA_INVALIDA}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" starttime="20250801 15:20:02.215" endtime="20250801 15:20:02.220"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=${TEXTO_PESQUISADO}</arg>
+<arg>${PESQUISA_INVALIDA}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20250801 15:20:02.221" level="INFO">Verifying element 'xpath=//section[contains(@class, 'ast-archive-description')]//h1//span' contains exact text 'morango'.</msg>
+<status status="PASS" starttime="20250801 15:20:02.221" endtime="20250801 15:20:02.242"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=${SEM_RESULTADO}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250801 15:20:02.242" endtime="20250801 15:20:02.252"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:20:02.339" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-6.png"&gt;&lt;img src="screenshots/selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:20:02.252" endtime="20250801 15:20:02.339"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:02.214" endtime="20250801 15:20:02.340"/>
+</kw>
+<kw name="Fechar o navegador" library="common.resource" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20250801 15:20:02.340" endtime="20250801 15:20:04.446"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:02.340" endtime="20250801 15:20:04.447"/>
+</kw>
+<status status="PASS" starttime="20250801 15:19:52.755" endtime="20250801 15:20:04.449"/>
+</test>
+<test id="s1-t3" name="Acessar artigo via menu 'Produtos'" line="24">
+<kw name="Abrir o navegador" library="common.resource" type="SETUP">
+<kw name="Configurar Ambiente" library="common.resource">
+<kw name="Create Directory" library="OperatingSystem">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Creates the specified directory.</doc>
+<msg timestamp="20250801 15:20:04.454" level="INFO" html="true">Directory '&lt;a href="file://C:\repo\blog-agi-automation-tests\screenshots"&gt;C:\repo\blog-agi-automation-tests\screenshots&lt;/a&gt;' already exists.</msg>
+<status status="PASS" starttime="20250801 15:20:04.454" endtime="20250801 15:20:04.454"/>
+</kw>
+<kw name="Set Screenshot Directory" library="SeleniumLibrary">
+<arg>${SCREENSHOT_DIR}</arg>
+<doc>Sets the directory for captured screenshots.</doc>
+<status status="PASS" starttime="20250801 15:20:04.454" endtime="20250801 15:20:04.455"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:04.452" endtime="20250801 15:20:04.455"/>
+</kw>
+<kw name="Set Variable If" library="BuiltIn">
+<var>${chrome_options}</var>
+<arg>'${MODO_HEADLESS}' == 'True'</arg>
+<arg>add_argument("--headless=new");add_argument("--disable-gpu")</arg>
+<arg>${EMPTY}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<msg timestamp="20250801 15:20:04.455" level="INFO">${chrome_options} = add_argument("--headless=new");add_argument("--disable-gpu")</msg>
+<status status="PASS" starttime="20250801 15:20:04.455" endtime="20250801 15:20:04.455"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<arg>options=${chrome_options}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20250801 15:20:04.456" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20250801 15:20:04.455" endtime="20250801 15:20:05.689"/>
+</kw>
+<kw name="Set Window Size" library="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20250801 15:20:05.689" endtime="20250801 15:20:05.719"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:04.452" endtime="20250801 15:20:05.719"/>
+</kw>
+<kw name="Acessar Home Page" library="homepage">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${HOME_URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20250801 15:20:05.719" level="INFO">Opening url 'https://blog.agibank.com.br'</msg>
+<status status="PASS" starttime="20250801 15:20:05.719" endtime="20250801 15:20:05.932"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:05.719" endtime="20250801 15:20:05.932"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>07s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20250801 15:20:12.933" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20250801 15:20:05.933" endtime="20250801 15:20:12.933"/>
+</kw>
+<kw name="Passar o mouse sobre o menu 'Produtos'" library="segurospage">
+<kw name="Mouse Over" library="SeleniumLibrary">
+<arg>xpath=${MENU_PRODUTOS}</arg>
+<doc>Simulates hovering the mouse over the element ``locator``.</doc>
+<msg timestamp="20250801 15:20:12.935" level="INFO">Simulating Mouse Over on element 'xpath=//span[contains(@class,'menu-text') and normalize-space()='Produtos']'.</msg>
+<status status="PASS" starttime="20250801 15:20:12.935" endtime="20250801 15:20:13.237"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:20:13.321" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-7.png"&gt;&lt;img src="screenshots/selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:20:13.238" endtime="20250801 15:20:13.321"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:12.934" endtime="20250801 15:20:13.322"/>
+</kw>
+<kw name="Clicar no submenu 'Seguros'" library="segurospage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${MENU_SEGUROS}</arg>
+<arg>timeout=${TIMEOUT_CURTO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:20:13.324" endtime="20250801 15:20:13.342"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=${MENU_SEGUROS}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20250801 15:20:13.343" level="INFO">Clicking element 'xpath=//span[@class='menu-text' and normalize-space()='Seguros']'.</msg>
+<status status="PASS" starttime="20250801 15:20:13.343" endtime="20250801 15:20:13.491"/>
+</kw>
+<kw name="Wait Until Location Contains" library="SeleniumLibrary">
+<arg>/seguros/</arg>
+<arg>timeout=${TIMEOUT_CURTO}</arg>
+<doc>Waits until the current URL contains ``expected``.</doc>
+<status status="PASS" starttime="20250801 15:20:13.491" endtime="20250801 15:20:13.499"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:13.322" endtime="20250801 15:20:13.499"/>
+</kw>
+<kw name="Validar título da página 'Seguros'" library="segurospage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath=${SEGUROS_TITULO}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20250801 15:20:13.500" endtime="20250801 15:20:13.519"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>xpath=${SEGUROS_TITULO}</arg>
+<arg>Seguros</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20250801 15:20:13.520" level="INFO">Verifying element 'xpath=//h1[contains(@class, 'page-title') and normalize-space()='Seguros']' contains exact text 'Seguros'.</msg>
+<status status="PASS" starttime="20250801 15:20:13.520" endtime="20250801 15:20:13.541"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20250801 15:20:13.622" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-8.png"&gt;&lt;img src="screenshots/selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20250801 15:20:13.541" endtime="20250801 15:20:13.622"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:13.500" endtime="20250801 15:20:13.622"/>
+</kw>
+<kw name="Validar presença de artigos na página 'Seguros'" library="segurospage">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>xpath=${SEGUROS_ARTIGOS}</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20250801 15:20:13.622" endtime="20250801 15:20:13.633"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:13.622" endtime="20250801 15:20:13.633"/>
+</kw>
+<kw name="Clicar no primeiro artigo da pagina 'Seguros'" library="segurospage">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${artigo_visivel}</var>
+<arg>Element Should Be Visible</arg>
+<arg>xpath=${SEGUROS_ARTIGOS}//h2/a[1]</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>xpath=${SEGUROS_ARTIGOS}//h2/a[1]</arg>
+<arg>timeout=${TIMEOUT_MEDIO}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20250801 15:20:13.753" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="screenshots/selenium-screenshot-9.png"&gt;&lt;img src="screenshots/selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20250801 15:20:13.753" level="FAIL">timeout=10s</msg>
+<status status="FAIL" starttime="20250801 15:20:13.634" endtime="20250801 15:20:13.756"/>
+</kw>
+<msg timestamp="20250801 15:20:13.756" level="INFO">${artigo_visivel} = False</msg>
+<status status="PASS" starttime="20250801 15:20:13.634" endtime="20250801 15:20:13.756"/>
+</kw>
+<if>
+<branch type="IF" condition="${artigo_visivel}">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath=${SEGUROS_ARTIGOS}//h2/a[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20250801 15:20:13.757" endtime="20250801 15:20:13.757"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="NOT RUN" starttime="20250801 15:20:13.757" endtime="20250801 15:20:13.757"/>
+</kw>
+<status status="NOT RUN" starttime="20250801 15:20:13.756" endtime="20250801 15:20:13.757"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" library="BuiltIn">
+<arg>Nenhum artigo disponível na página de 'Seguros'. Teste encerrado sem erro.</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20250801 15:20:13.758" level="INFO">Nenhum artigo disponível na página de 'Seguros'. Teste encerrado sem erro.</msg>
+<status status="PASS" starttime="20250801 15:20:13.757" endtime="20250801 15:20:13.758"/>
+</kw>
+<kw name="Set Test Message" library="BuiltIn">
+<arg>Nenhum artigo encontrado na página. Cenário não aplicável neste momento.</arg>
+<doc>Sets message for the current test case.</doc>
+<msg timestamp="20250801 15:20:13.758" level="INFO">Set test message to:
+Nenhum artigo encontrado na página. Cenário não aplicável neste momento.</msg>
+<status status="PASS" starttime="20250801 15:20:13.758" endtime="20250801 15:20:13.758"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:13.757" endtime="20250801 15:20:13.759"/>
+</branch>
+<status status="PASS" starttime="20250801 15:20:13.756" endtime="20250801 15:20:13.759"/>
+</if>
+<status status="PASS" starttime="20250801 15:20:13.633" endtime="20250801 15:20:13.759"/>
+</kw>
+<kw name="Fechar o navegador" library="common.resource" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20250801 15:20:13.759" endtime="20250801 15:20:15.939"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:13.759" endtime="20250801 15:20:15.940"/>
+</kw>
+<status status="PASS" starttime="20250801 15:20:04.452" endtime="20250801 15:20:15.941">Nenhum artigo encontrado na página. Cenário não aplicável neste momento.</status>
+</test>
+<doc>Essa suíte automatiza testes funcionais de busca e navegação no Blog do Agi</doc>
+<status status="PASS" starttime="20250801 15:19:40.891" endtime="20250801 15:20:15.945"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Blog Agibank Automation Suite">Blog Agibank Automation Suite</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
