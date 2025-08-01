@@ -1,5 +1,6 @@
 name: Run Robot Framework Tests
 
+# Define quando o workflow deve rodar (sempre que houver push na main)
 on:
   push:
     branches:
@@ -7,17 +8,20 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # Utilizando uma imagem Ubuntu para rodar os testes
 
     steps:
+      # Passo 1: Checkout do código
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Passo 2: Setar o Python
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.9'  # Define a versão do Python que você quer usar
 
+      # Passo 3: Instalar dependências
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -25,12 +29,9 @@ jobs:
           sudo apt-get install -y \
             chromium-browser \
             chromium-chromedriver
-          
+
+      # Passo 4: Rodar os testes
       - name: Run Robot Framework tests
         run: |
-        #   # Rodar o Chrome em modo headless
-        #   export DISPLAY=:99.0
-        #   google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
-          
-        #   # Rodar o Robot Framework com seus testes
-          robot my_test_suite.robot
+          # Rodar os testes da pasta 'tests'
+          robot tests/
