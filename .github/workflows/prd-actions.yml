@@ -1,3 +1,4 @@
+
 name: Run Robot Framework Tests
 
 on:
@@ -5,21 +6,17 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
   workflow_dispatch:
 
 jobs:
-  setup:
+  test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-  test:
-    runs-on: ubuntu-latest
-    needs: setup
-
-    steps:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -28,20 +25,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          
       - name: Run Robot Framework tests
         env:
           CHROME_BIN: /usr/bin/google-chrome-stable
           CHROMEDRIVER_PATH: /usr/lib/chromium-browser/chromedriver
         run: |
           robot --outputdir results/ tests/
-
-  publish:
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Publish Results
+      - name: Salvar relatórios como artefatos
         uses: actions/upload-artifact@v4
         with:
           name: robot-report
