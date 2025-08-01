@@ -37,5 +37,13 @@ jobs:
 
       # Passo 4: Rodar os testes
       - name: Run Robot Framework tests
+        env:
+          CHROME_BIN: /usr/bin/google-chrome-stable
+          CHROMEDRIVER_PATH: /usr/lib/chromium-browser/chromedriver
         run: |
+          # Rodar o Chrome em modo headless
+          export DISPLAY=:99.0
+          google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
+
+          # Rodar os testes da pasta 'tests'
           robot tests/
