@@ -24,16 +24,9 @@ jobs:
       # Passo 3: Instalar dependências
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install robotframework  # Instalar o Robot Framework
-          pip install robotframework-seleniumlibrary  # Instalar o SeleniumLibrary
-          
-          # Instalar o Google Chrome
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-          
-          # Instalar o ChromeDriver
-          sudo apt-get install -y chromium-chromedriver
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install chromedriver-autoinstaller
 
       # Passo 4: Rodar os testes
       - name: Run Robot Framework tests
@@ -41,9 +34,4 @@ jobs:
           CHROME_BIN: /usr/bin/google-chrome-stable
           CHROMEDRIVER_PATH: /usr/lib/chromium-browser/chromedriver
         run: |
-          # Rodar o Chrome em modo headless
-          export DISPLAY=:99.0
-          google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 &
-
-          # Rodar os testes da pasta 'tests'
           robot tests/
