@@ -2,9 +2,10 @@ name: Run Robot Framework Tests
 
 # Define quando o workflow deve rodar (sempre que houver push na main)
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   test:
