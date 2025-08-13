@@ -108,7 +108,7 @@ Após a execução, os seguintes arquivos serão gerados:
 
 ## 🛠️ Testes Implementados
 
-| Endpoint                            | Status |
+| Cenários                            | Status |
 |-------------------------------------|--------|
 | `Busca com resultados`              | ✅     |
 | `Busca sem resultados`              | ✅     |
